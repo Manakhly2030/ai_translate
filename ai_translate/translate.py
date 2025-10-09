@@ -149,7 +149,7 @@ Translation:"""
 
     # Updated to use current available models
     payload = {
-        "model": "llama3-70b-8192",  # Updated model name
+        "model": "llama-3.3-70b-versatile",  # Current production model (as of Oct 2025)
         "messages": [
             {
                 "role": "system",
@@ -178,7 +178,7 @@ Translation:"""
             return {
                 'translated_text': translated_text,
                 'confidence': 0.95,
-                'model': 'llama3-70b-8192',
+                'model': 'llama-3.3-70b-versatile',
                 'provider': 'groq'
             }
         else:
@@ -631,7 +631,7 @@ def get_ai_setup_guide():
             'signup_url': 'https://console.groq.com',
             'api_key_url': 'https://console.groq.com/keys',
             'config_key': 'groq_api_key',
-            'model': 'llama3-70b-8192',
+            'model': 'llama-3.3-70b-versatile',
             'speed': 'Ultra Fast',
             'quality': 'Very Good'
         },
@@ -959,14 +959,14 @@ def validate_api_key(provider, api_key):
         return {'valid': False, 'error': str(e)}
 
 def test_groq_key(api_key, text):
-    """Test Groq API key with updated model"""
+    """Test Groq API key with current production model"""
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "llama3-70b-8192",  # Updated model
+        "model": "llama-3.3-70b-versatile",  # Current production model
         "messages": [{"role": "user", "content": f"Translate to Arabic: {text}"}],
         "max_tokens": 50
     }
